@@ -1,3 +1,5 @@
+> ### ⚠️ This package has been deprecated. See the [Deprecation Notice](#deprecation-notice) for more information.
+
 # Slack Events API
 
 The `@slack/events-api` package helps your app respond to events from Slack's [Events API](https://api.slack.com/events-api)

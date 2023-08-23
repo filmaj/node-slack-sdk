@@ -1,3 +1,5 @@
+> ### ⚠️ This package has been deprecated. See the [Deprecation Notice](#deprecation-notice) for more information.
+
 # Slack Interactive Messages for Node
 
 `@slack/interactive-messages` helps your app respond to interactions from Slack's
