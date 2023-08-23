@@ -37,4 +37,4 @@ jobs:
       if: steps.packages-files.outputs.any_changed == 'true'
       run: |
         echo "One or more files in the packages folder has changed."
-        echo "List all the files that have changed: ${{ steps.packages-files.outputs.all_changed_files }}
+        echo "List all the files that have changed: ${{ steps.packages-files.outputs.all_changed_files }}."
