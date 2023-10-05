@@ -29,7 +29,7 @@ jobs:
         # depending on which package we are testing, also npm link up other dependent packages
         case "$PWD" in
           */webhook) pushd ../types && npm i && popd && npm link ../types;;
-          # */web-api) npm link ../types && npm link ../logger;;
+          */web-api) pushd ../types && npm i && popd && npm link ../types && pushd ../logger && npm i && popd && npm link ../logger;;
           # TODO: add oauth and socket-mode here once those packages have new major versions released
           *) ;; # default
         esac
