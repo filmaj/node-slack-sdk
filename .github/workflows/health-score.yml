@@ -1,0 +1,35 @@
+name: Health Score
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  calc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v4
+    - name: Find and grep
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: find . -name '*.js' -not -path "*/node_modules/*" -exec grep -E "TODO|FIXME|HACK" {} \; | wc -l
+    - name: Find and grep2
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: echo "COMMENT_COUNT=$(find . -name '*.js' -not -path '*/node_modules/*' -exec grep -E 'TODO|FIXME|HACK' {} \; | wc -l)" >> "$GITHUB_ENV"
+    - name: Find and grep part deux
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: |
+        echo "found ${COMMENT_COUNT} problematic comments";
+        echo "COMMENT_SCORE=$(($COMMENT_COUNT*10))" >> "$GITHUB_ENV";
+    - name: Echo calculated score
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: |
+        echo "final score: ${COMMENT_SCORE}"
