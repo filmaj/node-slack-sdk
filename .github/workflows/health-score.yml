@@ -21,7 +21,7 @@ jobs:
       shell: bash
       run: |
         pwd
-        ack --count --no-filename 'TODO|HACK|FIXME'
+        ack 'TODO|HACK|FIXME'
         echo "COMMENT_COUNT=$(ack --count --no-filename 'TODO|HACK|FIXME')" >> "$GITHUB_ENV";
     - name: Echo and calculate score
       working-directory: packages/cli-hooks
