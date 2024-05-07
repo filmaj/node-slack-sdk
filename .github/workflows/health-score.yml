@@ -1,0 +1,34 @@
+name: Health Score
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  calc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v4
+    - name: Get ACK
+      run: sudo apt-get install -y ack
+    - name: Count bad comments
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: |
+        echo "COMMENT_COUNT=$(ack --count --no-filename \"TODO|HACK|FIXME\")" >> "$GITHUB_ENV";
+    - name: Echo and calculate score
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: |
+        echo "found ${COMMENT_COUNT} problematic comments";
+        echo "COMMENT_SCORE=$(($COMMENT_COUNT*10))" >> "$GITHUB_ENV";
+    - name: Echo calculated score
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: |
+        echo "final score: ${COMMENT_SCORE}
