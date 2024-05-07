@@ -14,13 +14,15 @@ jobs:
       fail-fast: false
     steps:
     - uses: actions/checkout@v4
-    - name: Get ACK
-      run: sudo apt-get install -y ack
-    - name: ack?
+    - name: Find and grep
       working-directory: packages/cli-hooks
       shell: bash
-      run: ack --count --no-filename TODO src
-    - name: Echo and calculate score
+      run: find . -name '*.js' -not -path "*/node_modules/*" -exec grep -E "TODO|FIXME|HACK" {} \; | wc -l
+    - name: Find and grep2
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: echo 'COMMENT_COUNT=$(find . -name "*.js" -not -path "*/node_modules/*" -exec grep -E "TODO|FIXME|HACK" {} \; | wc -l)' >> "$GITHUB_ENV"
+    - name: Find and grep part deux
       working-directory: packages/cli-hooks
       shell: bash
       run: |
