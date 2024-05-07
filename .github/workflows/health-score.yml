@@ -19,7 +19,7 @@ jobs:
     - name: ack?
       working-directory: packages/cli-hooks
       shell: bash
-      run: ack "TODO";
+      run: ack --help
     - name: Count bad comments
       working-directory: packages/cli-hooks
       shell: bash
