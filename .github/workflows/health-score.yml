@@ -32,4 +32,4 @@ jobs:
       working-directory: packages/cli-hooks
       shell: bash
       run: |
-        echo "final score: ${COMMENT_SCORE}
+        echo "final score: ${COMMENT_SCORE}"
