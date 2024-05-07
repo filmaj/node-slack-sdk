@@ -19,7 +19,7 @@ jobs:
     - name: ack?
       working-directory: packages/cli-hooks
       shell: bash
-      run: ack --count --no-filename TODO
+      run: ack --count --no-filename TODO src
     - name: Echo and calculate score
       working-directory: packages/cli-hooks
       shell: bash
