@@ -20,9 +20,9 @@ jobs:
       working-directory: packages/cli-hooks
       shell: bash
       run: |
-        pwd
-        ack 'TODO|HACK|FIXME'
-        echo "COMMENT_COUNT=$(ack --count --no-filename 'TODO|HACK|FIXME')" >> "$GITHUB_ENV";
+        ack "TODO";
+        ack "TODO|HACK|FIXME";
+        echo "COMMENT_COUNT=$(ack --count --no-filename \\"TODO|HACK|FIXME\\")" >> "$GITHUB_ENV";
     - name: Echo and calculate score
       working-directory: packages/cli-hooks
       shell: bash
