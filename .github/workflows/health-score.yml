@@ -21,7 +21,7 @@ jobs:
     - name: Find and grep2
       working-directory: packages/cli-hooks
       shell: bash
-      run: echo 'COMMENT_COUNT=$(find . -name "*.js" -not -path "*/node_modules/*" -exec grep -E "TODO|FIXME|HACK" {} \; | wc -l)' >> "$GITHUB_ENV"
+      run: echo "COMMENT_COUNT=$(find . -name '*.js' -not -path '*/node_modules/*' -exec grep -E 'TODO|FIXME|HACK' {} \; | wc -l)" >> "$GITHUB_ENV"
     - name: Find and grep part deux
       working-directory: packages/cli-hooks
       shell: bash
