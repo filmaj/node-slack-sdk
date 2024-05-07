@@ -16,6 +16,10 @@ jobs:
     - uses: actions/checkout@v4
     - name: Get ACK
       run: sudo apt-get install -y ack
+    - name: ack?
+      working-directory: packages/cli-hooks
+      shell: bash
+      run: ack "TODO";
     - name: Count bad comments
       working-directory: packages/cli-hooks
       shell: bash
